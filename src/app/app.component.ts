@@ -12,6 +12,10 @@ import {Category} from "./Category";
 export class AppComponent implements OnInit{
   businesses: Business[];
   categories: Category[];
+
+  appState: string;
+  activeKey: string;
+
   constructor(private _firebaseService: FirebaseService) {
 
   }
@@ -25,4 +29,26 @@ export class AppComponent implements OnInit{
       this.categories = categories;
     });
   }
+
+  changeState(state,key){
+    console.log('Changing state to' + state);
+    if(key){
+      console.log('Changing key to' + key);
+      this.activeKey = key;
+     }
+     this.appState = state;
+  }
+
+  filterCategory(category) {
+    this._firebaseService.getBusinesses(category)
+      .subscribe(businesses => {
+        this.businesses = businesses;
+      });
+  }
 }
+
+
+
+
+
+
