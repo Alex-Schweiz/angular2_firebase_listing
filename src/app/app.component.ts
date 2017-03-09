@@ -16,8 +16,8 @@ export class AppComponent implements OnInit{
   appState: string;
   activeKey: string;
 
-  constructor(private _firebaseService: FirebaseService) {
 
+  constructor(private _firebaseService: FirebaseService) {
   }
 
   ngOnInit(){
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit{
     city: string,
     state: string,
     zipcode: string){
-      var created_at = new Date().toString;
+      var created_at = new Date().toString();
 
       var newBusiness = {
         company: company,
@@ -73,9 +73,11 @@ export class AppComponent implements OnInit{
         created_at: created_at
       };
 
+      //console.log(newBusiness);
+
       this._firebaseService.addBusiness(newBusiness);
 
-      //this.changeState('default');
+      this.changeState("default", null);
   }
 }
 

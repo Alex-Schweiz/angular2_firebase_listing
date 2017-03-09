@@ -12,7 +12,6 @@ export class FirebaseService {
   categories: FirebaseListObservable<Category[]>;
 
   constructor(private _af: AngularFire){
-
   }
 
   getBusinesses(category: string = null){
